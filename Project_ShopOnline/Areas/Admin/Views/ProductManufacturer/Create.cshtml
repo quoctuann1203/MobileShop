@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3 style="margin: 40px 0 0 40px ;color: brown">Thêm Nhà Sản Xuất</h3>
+@using (Html.BeginForm("Create", "ProductManufacturer", FormMethod.Post, new { @style = "width: 90%; margin :40px;"}))
+{
+<form style="margin: 40px 80px 0 80px" class="needs-validation" novalidate>
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label style="margin-bottom: 8px" for="validationCustom01">Mã Nhà Sản Xuất</label>
+            <input type="text" class="form-control" name="MaNhaSanXuat" id="validationCustom01" placeholder="Ma Nha San Xuat" value="" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label style="margin-bottom: 8px" for="validationCustom02">Tên Nhà Sản Xuất</label>
+            <input type="text" class="form-control" name="TenNhaSanXuat" id="validationCustom02" placeholder="Ten Nha San Xuat" value="" required>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom02">Tình Trạng:</label>
+            <select style="margin-left:8px; width: 120px" id="option" name="TinhTrang" required>
+                <option value="0">Chưa Khóa</option>
+                <option value="1">Đã Khóa</option>
+            </select>
+        </div>
+    </div>
+    <button style="margin-right: 8px" type="button" class="btn btn-secondary">
+        <a style="text-decoration:none; color:#ffffff;" href="@Url.Action("Index","ProductManufacturer")">Trở về</a>
+    </button>
+    <button class="btn btn-primary" type="submit">Thêm Nhà Sản Xuất</button>
+</form>
+}
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+

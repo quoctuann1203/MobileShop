@@ -1,0 +1,78 @@
+﻿@model ShopOnlineConnection.SanPham
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h3 style="max-width:100%;margin: 20px 0; text-align:center;color:olive"> Xóa Sản Phẫm</h3>
+    <table class="table" style=" max-width:90% ; margin-left: 120px">
+        <tbody>
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Mã Sản Phẫm</td>
+                <td style="width:60%">
+                    <input type="text" name="MaSanPham" class="form-control" placeholder="Nhap ma san pham" value="@Model.MaSanPham" required readonly>
+                </td>
+                <td rowspan="8">
+                    @*<div>
+                            <img id="target" class="img" src="#" alt ="Your image" />
+                        </div>*@
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Mã Loại Sản Phẩm</td>
+                <td>
+                    @Html.DropDownList("MaLoaiSanPham", null, new { @style = "float: left; width:100px" })
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Mã Nhà Sản Xuất </td>
+                <td>
+                    @Html.DropDownList("MaNhaSanXuat", null, new { @style = "float: left; width:100px" })
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Tên Sản Phẫm </td>
+                <td style="width:60%">
+                    <input type="text" name="TenSanPham" class="form-control" placeholder="Nhap ten san pham" value="@Model.TenSanPham" required readonly>
+                </td>
+            </tr>
+            
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Giá</td>
+                <td style="width:60%">
+                    <input type="number" name="Gia" class="form-control" placeholder="Nhap gia " required value="@Model.Gia" readonly>
+                </td>
+            </tr>
+            
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Tình Trạng</td>
+                <td style="width:60%">
+                    <select style="margin-left:8px; width: 120px" id="option" name="TinhTrang" required>
+                        @if (Model.TinhTrang == "1")
+                        {
+                            <option value="1" selected>Đã Khóa</option>
+                        }
+                        else
+                        {
+                            <option value="0" selected>Chưa Khóa</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top:14px; font-weight:600">Cấu Hình</td>
+                <td colspan="2">
+                    <textarea class="ckeditor" name="CauHinh" rows="4" cols="80" value="@Model.CauHinh" readonly></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input style="background-color:aquamarine;color:white; width:25%; margin:0 30%" type="submit" name="btn_ThemDienThoai" value="Xóa Sản Phẫm " class="form-control" required>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+

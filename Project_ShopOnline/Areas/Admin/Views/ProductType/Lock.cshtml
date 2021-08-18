@@ -1,0 +1,64 @@
+﻿@model ShopOnlineConnection.LoaiSanPham
+@{
+    ViewBag.Title = "Lock";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3 style="margin: 40px 0 0 40px ;color: cadetblue">Khóa Loại Sản Phẫm</h3>
+@using (Html.BeginForm("Lock", "ProductType", FormMethod.Post, new { @style = "width: 90%; margin :40px;" }))
+{
+    <form style="margin: 40px 80px 0 80px" class="needs-validation" novalidate>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label style="margin-bottom: 8px" for="validationCustom01">Mã Loại Sản Phẫm</label>
+                <input type="text" class="form-control" name="MaLoaiSanPham" id="validationCustom01" placeholder="Ma Loai San Pham" value="@Model.MaLoaiSanPham" required readonly>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label style="margin-bottom: 8px" for="validationCustom02">Tên Loại Sản Phẫm</label>
+                <input type="text" class="form-control" name="TenLoaiSanPham" id="validationCustom02" placeholder="Ten Loai San Pham" value="@Model.TenLoaiSanPham" required readonly>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Tình Trạng:</label>
+                <select style="margin-left:8px; width: 120px" id="option" name="TinhTrang" required>
+                    @if (Model.TinhTrang == "1")
+                    {
+                        <option value="1" selected>Đã Khóa</option>
+                    }
+                    else
+                    {
+                        <option value="0" selected>Chưa Khóa</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <button style="margin-right: 8px" type="button" class="btn btn-secondary">
+            <a style="text-decoration:none; color:#ffffff;" href="@Url.Action("Index","ProductType")">Trở về</a>
+        </button>
+        <button class="btn btn-primary" type="submit">Xác Nhận</button>
+    </form>
+}
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+
